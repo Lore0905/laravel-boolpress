@@ -120,6 +120,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
@@ -637,7 +639,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("TestComponent")
+  return _c(
+    "div",
+    [
+      _c("h1", [_vm._v("Vue è stato importato correttamente")]),
+      _vm._v(" "),
+      _c("TestComponent"),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
