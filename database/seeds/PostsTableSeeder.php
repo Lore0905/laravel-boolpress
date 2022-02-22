@@ -16,7 +16,7 @@ class PostsTableSeeder extends Seeder
     {
         for ($i = 0; $i < 10; $i++){
             $new_post = new Post();
-            $new_post->title = $faker->word(5);
+            $new_post->title = $faker->words(5, true);
             $new_post->content = $faker->paragraph(rand(2,10));
             $new_post->slug = Str::slug($new_post->title);
             $new_post->save();
