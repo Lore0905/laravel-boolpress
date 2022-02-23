@@ -99,7 +99,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post_data = $request->all();
+        $request->validate($this->validation());
+
+        $post = Post::findOrFail($id);
+
+        // devo aggiornare lo slug solamente se il cliente cambia il titolo altrimenti, non avrebbe senso
+        if($post->title != $post_data['title']){
+
+            $post_data['slug'] = $this->getSlug($post_data['title']);
+
+        };
+
+        $post->update($post_data);
+
+        return redirect()->route('admin.post.show', [$post->id]);
     }
 
     /**
@@ -110,7 +124,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect()->route('admin.post.index');
     }
     protected function validation() {
         return [

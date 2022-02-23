@@ -4,7 +4,7 @@
 @section('content')
     <section class="container">
 
-        <h1>Crea il tuo comics</h1>
+        <h2>Crea il tuo Post</h2>
 
         {{-- ERRORS --}}
         @if ($errors->any())
