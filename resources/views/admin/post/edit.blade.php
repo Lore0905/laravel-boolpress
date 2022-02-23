@@ -33,6 +33,17 @@
             <textarea class="form-control" name="content" id="content" cols="30" rows="10" >{{old('content') ? old('content') : $post->content}}</textarea>
         </div>
 
+        {{-- button destry --}}
+        <div class="mb-2">
+            <form action="{{ route('admin.post.destroy', [$post->id]) }}" method="post">
+                @csrf
+                @method('DELETE')
+
+                <button class="btn btn-danger">Delete</button>
+                
+            </form>
+        </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
