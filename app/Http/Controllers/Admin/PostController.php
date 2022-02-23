@@ -140,7 +140,8 @@ class PostController extends Controller
     protected function validation() {
         return [
             'title' => 'required|max:255',
-            'content' => 'required|max:60000'
+            'content' => 'required|max:60000',
+            'category_id' => 'exists:categories,id|nullable'
         ];
     }
     protected function getSlug($title){
