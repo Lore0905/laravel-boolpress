@@ -20,6 +20,17 @@
         <form action="{{ route('admin.post.store') }}" method="post">
             @csrf
             @method('POST')
+            
+            {{-- categories --}}
+            <select class="form-select" aria-label="Default select example">
+
+                <option value="">Nessuna</option>
+
+                @foreach ($categories as $category)
+                    <option value="{{ old($category->id)}}">{{$category->name}}</option>
+                @endforeach
+
+            </select>
 
             {{-- title --}}
             <div class="mb-3">

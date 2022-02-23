@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -32,7 +33,14 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.post.create');
+        // prendo tutte le categorie dal model Category
+        $categories = Category::all();
+
+        $data = [
+            'categories' => $categories
+        ];
+
+        return view('admin.post.create', $data);
     }
 
     /**
