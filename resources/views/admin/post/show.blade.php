@@ -5,6 +5,7 @@
 
     <div class="card-header">
       <h6><strong>slug: </strong>{{$post->slug}}</h6>
+      <h6><strong>Category: </strong>{{$post->category ? $post->category->name : 'nessuna categoria'}}</h6>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{$post->title}}</h5>
