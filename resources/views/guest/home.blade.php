@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
+    @extends('layouts.dashboard')
     <div id="root">
-        
+
     </div>
+    
     <script src="{{asset('js/front.js')}}"></script>
 </body>
 </html>
