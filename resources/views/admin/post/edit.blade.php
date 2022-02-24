@@ -47,17 +47,18 @@
         </div>
 
         {{-- button destry --}}
-        <div class="mb-2">
-            <form action="{{ route('admin.post.destroy', [$post->id]) }}" method="post">
-                @csrf
-                @method('DELETE')
-
-                <button class="btn btn-danger">Delete</button>
-                
-            </form>
-        </div>
-
         <button type="submit" class="btn btn-primary">Submit</button>
-
+        
     </form>
+
+    <div class="mt-2">
+        <form action="{{ route('admin.post.destroy', [$post->id]) }}" method="post">
+            @csrf
+            @method('DELETE')
+
+            <button class="btn btn-danger">Delete</button>
+            
+        </form>
+    </div>
+
 @endsection
