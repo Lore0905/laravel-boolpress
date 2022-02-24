@@ -17,9 +17,22 @@
     @endif
 
     <form action="{{route('admin.post.update', [$post->id])}}" method="post">
-
         @csrf
         @method('PUT')
+
+        {{-- categories --}}
+
+        <span>Category:  </span>
+
+        <select class="form-select" aria-label="Default select example" id="category_id" name="category_id">
+
+            <option value="">Nessuna</option>
+
+            @foreach ($categories as $category)
+                <option value="{{$category->id}}" {{old('category_id') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+            @endforeach
+
+        </select>
 
         {{-- title --}}
         <div class="mb-3">
