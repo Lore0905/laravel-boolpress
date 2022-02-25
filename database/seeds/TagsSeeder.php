@@ -18,8 +18,8 @@ class TagsSeeder extends Seeder
         foreach ($tags as $tag){
             $new_tag = new Tag();
             $new_tag->name = $tag;
-            $new_category->slug = Str::slug($tag);
-            $new_category->save();
+            $new_tag->slug = Str::slug($tag);
+            $new_tag->save();
         }
     }
 }
