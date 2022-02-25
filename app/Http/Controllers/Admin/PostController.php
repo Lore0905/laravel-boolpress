@@ -74,8 +74,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
+        $tag = $post->tags;
+
         $data = [
-            'post' => $post
+            'post' => $post,
+            'tag' => $tag
         ];
 
         return view('admin.post.show', $data);
