@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -36,8 +37,12 @@ class PostController extends Controller
         // prendo tutte le categorie dal model Category
         $categories = Category::all();
 
+        // prendo tutti i tag
+        $tags = Tag::all();
+
         $data = [
-            'categories' => $categories
+            'categories' => $categories,
+            'tags' => $tags
         ];
 
         return view('admin.post.create', $data);
@@ -52,14 +57,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $new_post_data = $request->all();
-
         $request->validate($this->validation());
 
         $new_post = new Post();
         $new_post->fill($new_post_data);
         $new_post->slug = $this->getSlug($new_post_data['title']);
-
+        // salvo i dati nel database
         $new_post->save();
+        // utilizzo la funzione tags() creata nel Model Post
+        $new_post->tags()->sync($new_post_data['tags']);
 
         return redirect()->route('admin.post.show', [$new_post->id]);
     }

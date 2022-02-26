@@ -22,7 +22,8 @@
             @method('POST')
             
             {{-- categories --}}
-            <select class="form-select" aria-label="Default select example" id="category_id" name="category_id">
+            <div class="mb-2">categoria</div>
+            <select class="form-select" id="category_id" name="category_id" >
 
                 <option value="">Nessuna</option>
 
@@ -33,9 +34,30 @@
             </select>
 
             {{-- title --}}
-            <div class="mb-3">
+            <div class="my-3">
                 <label for="title" class="form-label" >Titolo</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
+            </div>
+
+            {{-- tag --}}
+            <div class="mb-3">
+                {{-- title section --}}
+                <div>Tags</div>
+
+                {{-- chekbox --}}
+                @foreach ($tags as $tag)
+                    
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="{{'tag-'.$tag->id}}" name="tags[]">
+                        <label class="form-check-label" for="{{'tag-'.$tag->id}}">
+                        {{$tag->name}}
+                        </label>
+                    </div>
+
+                @endforeach
+
+                
+
             </div>
 
             {{-- content --}}
