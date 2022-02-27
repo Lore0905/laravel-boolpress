@@ -101,10 +101,13 @@ class PostController extends Controller
         $edit_post = Post::findOrFail($id);
         // prendo tutte le categorie dal model Category
         $categories = Category::all();
+        // prendo tutti i tag
+        $tags = Tag::all();
 
         $data = [
             'post' => $edit_post,
-            'categories' => $categories
+            'categories' => $categories,
+            'tags'=> $tags
         ];
 
         return view('admin.post.edit', $data);
@@ -132,6 +135,15 @@ class PostController extends Controller
         };
 
         $post->update($post_data);
+
+        if(isset($post_data['tags'])) {
+            $post->tags()->sync($post_data['tags']);
+        } else {
+            // Se non esiste la chiave tags in form_data
+            // significa che l'utente a rimosso il check da tutti i tag
+            // quindi se questo post aveva dei tag collegati li rimuovo
+            $post->tags()->sync([]);
+        }
 
         return redirect()->route('admin.post.show', [$post->id]);
     }

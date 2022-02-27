@@ -40,6 +40,33 @@
             <input type="text" class="form-control" id="title" name="title" value="{{old('title') ? old('title') : $post->title}}">
         </div>
 
+         {{-- tag --}}
+         <div class="mb-3">
+            {{-- title section --}}
+            <div>Tags</div>
+
+            {{-- chekbox --}}
+            @foreach ($tags as $tag)
+                
+                <div class="form-check">
+
+                    @if ($errors->any())
+                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="{{'tag-'.$tag->id}}" name="tags[]" {{in_array($tag->id, old('tags', [])) ? 'checked' : ''}}>
+                        
+                    @else
+                        <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="{{'tag-'.$tag->id}}" name="tags[]" >
+                    @endif
+
+                    <label class="form-check-label" for="{{'tag-'.$tag->id}}">
+                    {{$tag->name}}
+                    </label>
+
+                </div>
+
+            @endforeach
+            
+        </div>
+
         {{-- content --}}
         <div class="mb-3">
             <label for="content">Content</label>

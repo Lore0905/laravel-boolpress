@@ -58,9 +58,7 @@
                     </div>
 
                 @endforeach
-
                 
-
             </div>
 
             {{-- content --}}
