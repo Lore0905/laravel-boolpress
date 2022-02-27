@@ -48,6 +48,9 @@
                 @foreach ($tags as $tag)
                     
                     <div class="form-check">
+                        {{--spiegazione funzionalità {{in_array($tag->id, old('tags', [])) ? 'checked' : ''}}
+                        scopo: IN PRESENZA DI EROORE inserire il tag checked solo se la input era stata checkata precedentemente, altrimenti restituire una stringua vuota
+                        come funziona: verifica se dentro l'arrey old(tags) sono presenti i relativi $tag-id di ogni input. Se è presente il $tag->id dentro l'arrey old(tags) restituisce 'checked', altrimenti ''. --}}
                         <input class="form-check-input" type="checkbox" value="{{$tag->id}}" id="{{'tag-'.$tag->id}}" name="tags[]" {{in_array($tag->id, old('tags', [])) ? 'checked' : ''}}>
                         <label class="form-check-label" for="{{'tag-'.$tag->id}}">
                         {{$tag->name}}
