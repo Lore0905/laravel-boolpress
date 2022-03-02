@@ -1,17 +1,16 @@
 <template>
     <div>
-        <!-- <h1>Vue è stato importato correttamente</h1>
-        <TestComponent /> -->
+        <ListPosts /> 
     </div>
 </template>
 
 <script>
-import TestComponent from '../components/TestComponent.vue';
+import ListPosts from '../components/ListPosts.vue';
 
 export default {
     name: 'App',
     components: {
-        TestComponent
+        ListPosts
     }
 }
 </script>

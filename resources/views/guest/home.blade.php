@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
-    @extends('layouts.dashboard')
+
     <div id="root">
 
     </div>
