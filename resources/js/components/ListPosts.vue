@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- title -->
-        <h1>Lasta dei Post</h1>
+        <h1>Posts</h1>
 
         <!-- card -->
         <div class="container">
@@ -63,6 +63,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+h1{
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
 </style>

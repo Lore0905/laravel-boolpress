@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 // lasta componenti
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
+import Blog from './pages/Blog.vue';
 // end lista componenti
 
 const router = new VueRouter({
@@ -22,6 +23,11 @@ const router = new VueRouter({
             path: "/about",
             name: "about",
             component: About
+        },
+        {
+            path: "/blog",
+            name: "blog",
+            component: Blog
         }
     ]
 });

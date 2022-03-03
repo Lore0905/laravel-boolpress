@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrapping-body">
         <!-- HEADER -->
         <header>
             <Header />
@@ -25,3 +25,9 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.wrapping-body{
+    background-color: #086e7d;
+}
+</style>
