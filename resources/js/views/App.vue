@@ -26,8 +26,11 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.wrapping-body{
+<style lang="scss">
+body{
     background-color: #086e7d;
+}
+h1{
+    color: white;
 }
 </style>
