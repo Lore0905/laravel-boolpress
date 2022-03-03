@@ -1,16 +1,27 @@
 <template>
     <div>
-        <ListPosts /> 
+        <!-- HEADER -->
+        <header>
+            <Header />
+        </header>
+        <!-- END HEADER -->
+
+        <!-- MAIN -->
+        <main>
+            <router-view></router-view>
+        </main>
+        <!-- END MAIN -->
     </div>
 </template>
 
 <script>
-import ListPosts from '../components/ListPosts.vue';
+
+import Header from '../components/Header.vue';
 
 export default {
     name: 'App',
     components: {
-        ListPosts
+        Header
     }
 }
 </script>
