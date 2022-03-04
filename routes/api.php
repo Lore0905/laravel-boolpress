@@ -18,4 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// funzione index
 Route::get('/posts', 'Api\PostController@index');
+// funzione show
+Route::get('/posts/{slug}', 'Api\PostController@show');
+

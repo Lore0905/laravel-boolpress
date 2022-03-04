@@ -10,6 +10,7 @@ import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Blog from './pages/Blog.vue';
 import Alert from './pages/Alert.vue';
+import DetailsPost from './pages/DetailsPost.vue';
 // end lista componenti
 
 const router = new VueRouter({
@@ -29,6 +30,11 @@ const router = new VueRouter({
             path: "/blog",
             name: "blog",
             component: Blog
+        },
+        {
+            path: "/blog/:slug",
+            name: "post-details",
+            component: DetailsPost
         },
         {
             path: "/*",
