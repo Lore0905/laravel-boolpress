@@ -3,6 +3,23 @@
         <!-- title -->
         <h1>Posts</h1>
 
+        <!-- category -->
+        <!-- vediamo i tag solo se post.category non è null -->
+        <div v-if="post.category">
+            <span class="badge bg-warning text-dark category">{{post.category.name}}</span>
+        </div>
+        <!-- end category -->
+
+        <!-- tags -->
+        <div>
+            <ul>
+                <li v-for="(tag, index) in post.tags" :key="index" class="tags">
+                    <a href="">{{tag.name}}</a>
+                </li>
+            </ul>
+        </div>
+        <!-- tags -->
+
         <!-- card -->
         <div class="text-center">
             <div class="row">
@@ -63,3 +80,17 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.category{
+    font-size: 15px;
+    margin: 10px 0 ;
+}
+.tags{
+    margin-top: 5px;
+    a{
+        font-size: 17px;
+        color: white;
+    }
+}
+</style>

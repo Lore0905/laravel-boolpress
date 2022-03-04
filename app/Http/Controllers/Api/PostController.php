@@ -21,7 +21,7 @@ class PostController extends Controller
 
     // funzione che prende solo i post che hanno lo stesso slug passato al'url
     public function show($slug){
-        $post = Post::where('slug', '=', $slug)->first();
+        $post = Post::where('slug', '=', $slug)->with(['category', 'tags'])->first();
 
         // creo l'api
         // solo se il post preso ha lo slag
