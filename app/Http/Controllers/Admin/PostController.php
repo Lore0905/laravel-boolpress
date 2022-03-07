@@ -144,6 +144,16 @@ class PostController extends Controller
 
         };
 
+        // se nei post_data trovo img_path significa che l'user intende modificare l'immagine
+        if(isset($post_data['img_path'])){
+            // elimino il vecchio path deell'immagine che è presente su databse
+            Storage::delete($post->cover);
+            // aggiungo il nuovo path al database
+            $img_path = Storage::put('post_covers', $post_data['img_path']);
+            // pusho nell'array post_data 'cover' => $img_path,
+            $post_data['cover'] = $img_path;
+        }
+
         $post->update($post_data);
 
         if(isset($post_data['tags'])) {
@@ -176,7 +186,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'content' => 'required|max:60000',
             'category_id' => 'exists:categories,id|nullable',
-            // la validazione non funziona bisogna aggistarla
+            // la validazione non funziona bisogna aggiustarla
             // 'img_path' => 'img|max:512',
         ];
     }

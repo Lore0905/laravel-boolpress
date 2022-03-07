@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{route('admin.post.update', [$post->id])}}" method="post">
+    <form action="{{route('admin.post.update', [$post->id])}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -40,8 +40,8 @@
             <input type="text" class="form-control" id="title" name="title" value="{{old('title') ? old('title') : $post->title}}">
         </div>
 
-         {{-- tag --}}
-         <div class="mb-3">
+        {{-- tag --}}
+        <div class="mb-3">
             {{-- title section --}}
             <div>Tags</div>
 
@@ -71,6 +71,19 @@
         <div class="mb-3">
             <label for="content">Content</label>
             <textarea class="form-control" name="content" id="content" cols="30" rows="10" >{{old('content') ? old('content') : $post->content}}</textarea>
+        </div>
+
+        {{-- immagine attuale --}}
+        @if ($post->cover)
+            <div class="mb-3">
+                <img src="{{asset('storage/' . $post->cover)}}" alt="{{$post->title}}">
+            </div>
+        @endif
+
+        {{-- upload img --}}
+        <div class="mb-3">
+            <label for="img_path">Content</label>
+            <input type="file" id="img_path" name="img_path">
         </div>
 
         {{-- button destry --}}
