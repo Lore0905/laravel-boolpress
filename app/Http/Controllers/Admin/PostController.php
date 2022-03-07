@@ -8,6 +8,7 @@ use App\Post;
 use Illuminate\Support\Str;
 use App\Category;
 use App\Tag;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -62,6 +63,15 @@ class PostController extends Controller
         $new_post = new Post();
         $new_post->fill($new_post_data);
         $new_post->slug = $this->getSlug($new_post_data['title']);
+
+        if(isset($new_post_data['img_path'])){
+            // salvo l'imagine caricata dal user dentro storage
+            $img_path = Storage::put('post_covers', $new_post_data['img_path']);
+
+            // salvo il path nel database
+            $new_post->cover = $img_path;
+        }
+
         // salvo i dati nel database
         $new_post->save();
         // utilizzo la funzione tags() creata nel Model Post
@@ -165,7 +175,9 @@ class PostController extends Controller
         return [
             'title' => 'required|max:255',
             'content' => 'required|max:60000',
-            'category_id' => 'exists:categories,id|nullable'
+            'category_id' => 'exists:categories,id|nullable',
+            // la validazione non funziona bisogna aggistarla
+            // 'img_path' => 'img|max:512',
         ];
     }
     protected function getSlug($title){
