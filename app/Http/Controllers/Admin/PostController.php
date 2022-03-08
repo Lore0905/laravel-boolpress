@@ -187,7 +187,7 @@ class PostController extends Controller
             'content' => 'required|max:60000',
             'category_id' => 'exists:categories,id|nullable',
             // la validazione non funziona bisogna aggiustarla
-            // 'img_path' => 'img|max:512',
+            'img_path' => 'image|max:512',
         ];
     }
     protected function getSlug($title){
