@@ -9,7 +9,11 @@
                 <div class="col " v-for="post in posts" :key="post.id">
 
                     <div class="card m-2" >
-                        <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                        <!-- faccio vedere l'immagine solo se cover esiste -->
+                        <div v-if='post.cover'>
+                            <img class="card-img-top" :src="post.cover" alt="Card image cap">
+                        </div>
+
                         <div class="card-body">
                             <h5 class="card-title">{{post.title}}</h5>
                             <p class="card-text">{{troncateString(post.content, 100)}}</p>

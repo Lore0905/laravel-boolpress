@@ -2142,6 +2142,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'DetailsPost',
   data: function data() {
@@ -3795,6 +3798,15 @@ var render = function () {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col" }, [
           _c("div", { staticClass: "card m-2" }, [
+            _vm.post.cover
+              ? _c("div", [
+                  _c("img", {
+                    staticClass: "card-img-top",
+                    attrs: { src: _vm.post.cover, alt: "Card image cap" },
+                  }),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c("h5", { staticClass: "card-title" }, [
                 _vm._v(_vm._s(_vm.post.title)),
