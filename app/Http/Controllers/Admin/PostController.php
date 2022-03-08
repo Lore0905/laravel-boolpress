@@ -146,7 +146,7 @@ class PostController extends Controller
 
         // se nei post_data trovo img_path significa che l'user intende modificare l'immagine
         if(isset($post_data['img_path'])){
-            // elimino il vecchio path deell'immagine che è presente su databse
+            // elimino il vecchio path dell'immagine che è presente su databse
             Storage::delete($post->cover);
             // aggiungo il nuovo path al database
             $img_path = Storage::put('post_covers', $post_data['img_path']);
