@@ -2,6 +2,7 @@
     <div class="container">
 
         <form>
+            
             <!-- name -->
             <div class="form-group">
                 <label for="name_contacts">Name</label>
@@ -23,7 +24,7 @@
                 <textarea class="form-control" id="textarea_contacts" name="textarea_contacts" rows="3" placeholder="Scrivi qui il tuo messaggio"></textarea>
             </div>
             <!-- button -->
-            <button type="submit" class="btn btn-primary">Invici il tuo messaggio</button>
+            <button type="submit" class="btn btn-primary">Inviaci il tuo messaggio</button>
 
         </form>
 

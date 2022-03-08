@@ -23,3 +23,6 @@ Route::get('/posts', 'Api\PostController@index');
 // funzione show
 Route::get('/posts/{slug}', 'Api\PostController@show');
 
+// creo una api che viene chiamata dalla funzione store
+Route::post('/contact', 'Api\ContactsMessageController@store');
+

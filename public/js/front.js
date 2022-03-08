@@ -2133,6 +2133,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Contacts',
   components: {}
@@ -3959,7 +3960,7 @@ var staticRenderFns = [
         _c(
           "button",
           { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Invici il tuo messaggio")]
+          [_vm._v("Inviaci il tuo messaggio")]
         ),
       ]),
     ])
