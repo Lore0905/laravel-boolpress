@@ -11,6 +11,7 @@ import About from './pages/About.vue';
 import Blog from './pages/Blog.vue';
 import Alert from './pages/Alert.vue';
 import DetailsPost from './pages/DetailsPost.vue';
+import Contacts from './pages/Contacts.vue';
 // end lista componenti
 
 const router = new VueRouter({
@@ -35,6 +36,11 @@ const router = new VueRouter({
             path: "/blog/:slug",
             name: "post-details",
             component: DetailsPost
+        },
+        {
+            path: "/contacts",
+            name: "contacts",
+            component: Contacts
         },
         {
             path: "/*",
