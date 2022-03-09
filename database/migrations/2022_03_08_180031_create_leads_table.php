@@ -15,7 +15,7 @@ class CreateLeadsTable extends Migration
     {
         Schema::create('leads', function (Blueprint $table) {
             $table->id();
-            $table->string('name_contacts', 255);
+            $table->string('name_contacts', 255)->nullable();
             $table->string('lastname_contacts', 255);
             $table->string('email_contact', 255);
             $table->text('textarea_contacts');
