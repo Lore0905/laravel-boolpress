@@ -2142,14 +2142,17 @@ __webpack_require__.r(__webpack_exports__);
       lastname_contacts: '',
       email_contact: '',
       textarea_contacts: '',
-      success: false
+      success: false,
+      disabled: false
     };
   },
   methods: {
     sendMessage: function sendMessage() {
       var _this = this;
 
-      // faccio una chiamata ajx alla api Api/contact
+      // quando faccio partire la chiamata ajax il button diventa disabled
+      this.disabled = true; // faccio una chiamata ajx alla api Api/contact
+
       axios.post('/api/contact', {
         name_contacts: this.name_contacts,
         lastname_contacts: this.lastname_contacts,
@@ -2164,7 +2167,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.textarea_contacts = '';
         } else {
           _this.success = false;
-        }
+        } // alla fine della chiamata anche SE NON RIUSCITA il disabled ridiventa false
+
+
+        _this.disabled = false;
       });
     }
   }
@@ -4053,7 +4059,7 @@ var render = function () {
         "button",
         {
           staticClass: "btn btn-primary",
-          attrs: { type: "submit" },
+          attrs: { type: "submit", disabled: _vm.disabled },
           on: {
             click: function ($event) {
               $event.preventDefault()

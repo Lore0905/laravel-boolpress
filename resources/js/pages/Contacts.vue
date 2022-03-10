@@ -24,7 +24,7 @@
                 <textarea v-model="textarea_contacts" class="form-control" id="textarea_contacts" name="textarea_contacts" rows="3" placeholder="Scrivi qui il tuo messaggio"></textarea>
             </div>
             <!-- button -->
-            <button type="submit" @click.prevent="sendMessage()" class="btn btn-primary">Inviaci il tuo messaggio</button>
+            <button type="submit" :disabled="disabled" @click.prevent="sendMessage()" class="btn btn-primary">Inviaci il tuo messaggio</button>
 
         </form>
 
@@ -40,11 +40,14 @@ export default {
             lastname_contacts: '',
             email_contact: '',
             textarea_contacts: '',
-            success: false
+            success: false,
+            disabled: false
         };
     },
     methods: {
         sendMessage: function(){
+            // quando faccio partire la chiamata ajax il button diventa disabled
+            this.disabled = true;
 
             // faccio una chiamata ajx alla api Api/contact
             axios.post('/api/contact', {
@@ -62,7 +65,11 @@ export default {
                 }else {
                     this.success = false;
                 }
+                
+                // alla fine della chiamata anche SE NON RIUSCITA il disabled ridiventa false
+                this.disabled = false;
             });
+
         },
         
     }
