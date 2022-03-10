@@ -2142,7 +2142,7 @@ __webpack_require__.r(__webpack_exports__);
       lastname_contacts: '',
       email_contact: '',
       textarea_contacts: '',
-      data: []
+      success: false
     };
   },
   methods: {
@@ -2156,15 +2156,14 @@ __webpack_require__.r(__webpack_exports__);
         email_contact: this.email_contact,
         textarea_contacts: this.textarea_contacts
       }).then(function (response) {
-        console.log(response);
-
-        if (response.data.sucess) {
+        // se la success è true, allora ripristina le input, altrimenti success rimane false
+        if (response.data.success) {
           _this.name_contacts = '';
           _this.lastname_contacts = '';
           _this.email_contact = '';
           _this.textarea_contacts = '';
         } else {
-          _this.sucess = false;
+          _this.success = false;
         }
       });
     }

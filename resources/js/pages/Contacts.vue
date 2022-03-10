@@ -40,7 +40,7 @@ export default {
             lastname_contacts: '',
             email_contact: '',
             textarea_contacts: '',
-            data: []
+            success: false
         };
     },
     methods: {
@@ -53,14 +53,14 @@ export default {
                 email_contact: this.email_contact,
                 textarea_contacts: this.textarea_contacts
             }).then((response) => {
-                console.log(response);
-                if(response.data.sucess){
+                // se la success è true, allora ripristina le input, altrimenti success rimane false
+                if(response.data.success){
                     this.name_contacts = '';
                     this.lastname_contacts = ''; 
                     this.email_contact = ''; 
                     this.textarea_contacts = ''; 
                 }else {
-                    this.sucess = false;
+                    this.success = false;
                 }
             });
         },
