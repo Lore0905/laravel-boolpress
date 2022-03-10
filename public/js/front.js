@@ -2136,7 +2136,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Contacts',
-  components: {}
+  data: function data() {
+    return {
+      name_contacts: '',
+      lastname_contacts: '',
+      email_contact: '',
+      textarea_contacts: '',
+      data: []
+    };
+  },
+  methods: {
+    sendMessage: function sendMessage() {
+      var _this = this;
+
+      // faccio una chiamata ajx alla api Api/contact
+      axios.post('/api/contact', {
+        name_contacts: this.name_contacts,
+        lastname_contacts: this.lastname_contacts,
+        email_contact: this.email_contact,
+        textarea_contacts: this.textarea_contacts
+      }).then(function (response) {
+        console.log(response);
+
+        if (response.data.sucess) {
+          _this.name_contacts = '';
+          _this.lastname_contacts = '';
+          _this.email_contact = '';
+          _this.textarea_contacts = '';
+        } else {
+          _this.sucess = false;
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -3886,86 +3918,156 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("form", [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "name_contacts" } }, [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "name_contacts",
-              name: "name_contacts",
-              placeholder: "Name",
-            },
-          }),
-        ]),
+  return _c("div", { staticClass: "container" }, [
+    _c("form", [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "name_contacts" } }, [_vm._v("Name")]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "lastname_contacts" } }, [
-            _vm._v("Surname"),
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              id: "lastname_contacts",
-              name: "lastname_contacts",
-              placeholder: "Lastname",
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name_contacts,
+              expression: "name_contacts",
             },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "email_contact" } }, [
-            _vm._v("Email address"),
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "email",
-              id: "email_contact",
-              name: "email_contact",
-              placeholder: "Email",
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            id: "name_contacts",
+            name: "name_contacts",
+            placeholder: "Name",
+          },
+          domProps: { value: _vm.name_contacts },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name_contacts = $event.target.value
             },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", { attrs: { for: "textarea_contacts" } }, [
-            _vm._v("Messaggio"),
-          ]),
-          _vm._v(" "),
-          _c("textarea", {
-            staticClass: "form-control",
-            attrs: {
-              id: "textarea_contacts",
-              name: "textarea_contacts",
-              rows: "3",
-              placeholder: "Scrivi qui il tuo messaggio",
-            },
-          }),
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Inviaci il tuo messaggio")]
-        ),
+          },
+        }),
       ]),
-    ])
-  },
-]
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "lastname_contacts" } }, [
+          _vm._v("Surname"),
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.lastname_contacts,
+              expression: "lastname_contacts",
+            },
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "text",
+            id: "lastname_contacts",
+            name: "lastname_contacts",
+            placeholder: "Lastname",
+          },
+          domProps: { value: _vm.lastname_contacts },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.lastname_contacts = $event.target.value
+            },
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "email_contact" } }, [
+          _vm._v("Email address"),
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email_contact,
+              expression: "email_contact",
+            },
+          ],
+          staticClass: "form-control",
+          attrs: {
+            type: "email",
+            id: "email_contact",
+            name: "email_contact",
+            placeholder: "Email",
+          },
+          domProps: { value: _vm.email_contact },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.email_contact = $event.target.value
+            },
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "textarea_contacts" } }, [
+          _vm._v("Messaggio"),
+        ]),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.textarea_contacts,
+              expression: "textarea_contacts",
+            },
+          ],
+          staticClass: "form-control",
+          attrs: {
+            id: "textarea_contacts",
+            name: "textarea_contacts",
+            rows: "3",
+            placeholder: "Scrivi qui il tuo messaggio",
+          },
+          domProps: { value: _vm.textarea_contacts },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.textarea_contacts = $event.target.value
+            },
+          },
+        }),
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { type: "submit" },
+          on: {
+            click: function ($event) {
+              $event.preventDefault()
+              return _vm.sendMessage()
+            },
+          },
+        },
+        [_vm._v("Inviaci il tuo messaggio")]
+      ),
+    ]),
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

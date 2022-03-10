@@ -28,5 +28,9 @@ class ContactsMessageController extends Controller
 
         // quando le input dentro la pages contacts vengono salvate sul database, invio la mail di notifica
         Mail::to('customerservice@boolpress.it')->send(new NewPostAdminNotification($new_lead));
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }
