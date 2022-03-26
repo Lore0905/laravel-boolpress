@@ -8,23 +8,23 @@
 </head>
 <body>
     <div>
-        <h1>Ciao, ti avviso che è stata appena inviato il form di contatto</h1>
+        <h1>Ciao, ti avviso che {{$new_lead->name_contacts}} {{$new_lead->lastname_contacts}} è stata appena inviato il form di contatto</h1>
 
         {{-- name --}}
         <div>
-            <h4>Name:</h4> {{$new_lead->name_contacts}}
+            <h4>Name: {{$new_lead->name_contacts}}</h4> 
         </div>
         {{-- lastname --}}
         <div>
-            <h4>Lastname: </h4> {{$new_lead->lastname_contacts}}
+            <h4>Lastname: {{$new_lead->lastname_contacts}}</h4> 
         </div>
         {{-- email --}}
         <div>
-            <h4>Email: </h4>{{$new_lead->email_contact}}
+            <h4>Email: {{$new_lead->email_contact}}</h4>
         </div>
         {{-- message --}}
         <div>
-            <h4>Message: </h4>{{$new_lead->textarea_contacts}}
+            <h4>Message: {{$new_lead->textarea_contacts}}</h4>
         </div>
         
     </div>
